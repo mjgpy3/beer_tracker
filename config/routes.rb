@@ -1,4 +1,7 @@
 BeerTracker::Application.routes.draw do
+  resources :beers
+
+
   get "profile/index"
 
   root :to => "profile#index"

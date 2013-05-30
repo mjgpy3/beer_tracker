@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  brewery: MyString
+  brew: MyString
+  bottle: false
+  can: false
+  picture: MyString
+
+two:
+  brewery: MyString
+  brew: MyString
+  bottle: false
+  can: false
+  picture: MyString
