@@ -13,6 +13,7 @@
     <p>"For the beer connoisseur"</p>
     <table style="width:100%;border: 1px solid black;">
       <tr>
+        <td><%= link_to "My Profile", profile_index_path %></td>
         <td><%= link_to "View Beers", beers_path %></td>
         <td><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></td>
       <tr>
