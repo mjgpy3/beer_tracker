@@ -4,8 +4,6 @@
   <tr>
     <th>Brewery</th>
     <th>Brew</th>
-    <th>Bottle</th>
-    <th>Can</th>
     <% if current_user.is_admin? %>
     <th>Picture</th>
     <th></th>
@@ -18,8 +16,6 @@
   <tr>
     <td><%= beer.brewery %></td>
     <td><%= beer.brew %></td>
-    <td><%= beer.bottle %></td>
-    <td><%= beer.can %></td>
     <% if current_user.is_admin? %>
     <td><%= beer.picture %></td>
     <td><%= link_to 'Show', beer %></td>

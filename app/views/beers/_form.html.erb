@@ -19,14 +19,6 @@
     <%= f.label :brew %><br />
     <%= f.text_field :brew %>
   </div>
-  <div class="field">
-    <%= f.label :bottle %><br />
-    <%= f.check_box :bottle %>
-  </div>
-  <div class="field">
-    <%= f.label :can %><br />
-    <%= f.check_box :can %>
-  </div>
   <% if current_user.is_admin? %>
   <div class="field">
     <%= f.label :picture %><br />
