@@ -6,7 +6,9 @@
     <th>Brew</th>
     <th>Bottle</th>
     <th>Can</th>
+    <% if current_user.is_admin? %>
     <th>Picture</th>
+    <% end %>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +20,9 @@
     <td><%= beer.brew %></td>
     <td><%= beer.bottle %></td>
     <td><%= beer.can %></td>
+    <% if current_user.is_admin? %>
     <td><%= beer.picture %></td>
+    <% end %>
     <td><%= link_to 'Show', beer %></td>
     <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
     <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
