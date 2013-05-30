@@ -12,6 +12,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
 
 <% @beers.each do |beer| %>
@@ -26,6 +27,7 @@
     <td><%= link_to 'Show', beer %></td>
     <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
     <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
