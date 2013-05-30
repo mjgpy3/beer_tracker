@@ -62,12 +62,17 @@ class BeersController < ApplicationController
     @beer = Beer.find(params[:id])
 
     respond_to do |format|
-      if @beer.update_attributes(params[:beer])
-        format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
-        format.json { head :no_content }
+      if current_user.is_admin?
+        if @beer.update_attributes(params[:beer])
+          format.html { redirect_to @beer, notice: 'Beer was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @beer.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: "edit" }
-        format.json { render json: @beer.errors, status: :unprocessable_entity }
+        format.html { redirect_to @beer, notice: 'Unprocessable' }
+        format.json { head :no_content }
       end
     end
   end
@@ -75,8 +80,11 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
-    @beer = Beer.find(params[:id])
-    @beer.destroy
+
+    if current_user.is_admin?
+      @beer = Beer.find(params[:id])
+      @beer.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to beers_url }
