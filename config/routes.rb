@@ -1,4 +1,6 @@
 BeerTracker::Application.routes.draw do
+  get "profile/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
