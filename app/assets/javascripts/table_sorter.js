@@ -20,6 +20,7 @@ var rowStyleClasses = {
 //
 var tableRowsAndHeaders = {
   rows: [],
+  all_rows: [],
   headers: [],
   asc_sort: false
 };
@@ -71,7 +72,9 @@ var setupTableFromElement = function(tableElement) {
   rows = $("table.sortable-table tr").get().slice(1);
 
   for (i = 0; i < rows.length; i += 1) {
-    tableRowsAndHeaders.rows.push(buildRow(headers, rows[i].children, rows[i]));
+    row = buildRow(headers, rows[i].children, rows[i])
+    tableRowsAndHeaders.rows.push(row);
+    tableRowsAndHeaders.all_rows.push(row);
   }
 
   rewriteTableWith(tableRowsAndHeaders.rows);
@@ -142,7 +145,7 @@ var sortByHeaderElement = function(headerElement, numeric=false) {
       i,
       j;
 
-  if (tableRowsAndHeaders.headers.indexOf(sortBy) !== -1) {
+  if (headersInclude(sortBy)) {
     for (i = 0; i < toSort.length; i += 1) {
       if (i == 0) {
         sorted = [toSort[i]];
@@ -163,5 +166,45 @@ var sortByHeaderElement = function(headerElement, numeric=false) {
 
   sortType.ascending = !sortType.ascending;
 
-  rewriteTableWith(sorted)
+  rewriteTableWith(sorted);
 };
+
+// Removes rows that don't contain the text in the textElement. filterBy is
+// the name of the row to filter through.
+var filterRows = function (textElement, filterBy) {
+  var passingRows = [],
+      toFilter = tableRowsAndHeaders.all_rows,
+      filterText = textElement.value,
+      i;
+
+  console.log(filterText);
+  console.log(filterBy);
+
+  if (filterText == "") {
+   tableRowsAndHeaders.rows = toFilter;
+   rewriteTableWith(toFilter);
+   console.log("No text");
+   return;
+  }
+
+  if (headersInclude(filterBy)) {
+    for (i = 0; i < toFilter.length; i += 1) {
+      if (contains(toFilter[i][filterBy], filterText)) {
+        passingRows.push(toFilter[i]);
+        console.log("Found match");
+      }
+    }
+  }
+
+  tableRowsAndHeaders.rows = passingRows; 
+
+  rewriteTableWith(passingRows);
+}
+
+var headersInclude = function (headerName) {
+  return tableRowsAndHeaders.headers.indexOf(headerName) !== -1;
+}
+
+var contains = function (lookIn, forMe) {
+  return lookIn.toUpperCase().indexOf(forMe.toUpperCase()) !== -1;
+}
