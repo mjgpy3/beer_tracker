@@ -1,11 +1,11 @@
 <div>
   <h2><%= @user %>'s beers</h2>
 
-  <table border="1">
+  <table class="sortable-table" border="1">
     <tr>
-      <th>Brewery</th>
-      <th>Brew</th>
-      <th>Rating</th>
+      <th onclick="sortByHeaderElement(this)">Brewery</th>
+      <th onclick="sortByHeaderElement(this)">Brew</th>
+      <th onclick="sortByHeaderElement(this, true)">Rating</th>
       <th></th>
     </tr>
     <% current_user.trieds.each do | trial | %>
