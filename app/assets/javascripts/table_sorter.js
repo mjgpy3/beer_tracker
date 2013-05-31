@@ -77,6 +77,8 @@ var setupTableFromElement = function(tableElement) {
   rewriteTableWith(tableRowsAndHeaders.rows);
 };
 
+// Strips out any characters in a passed string
+// that are not numeric. Returns a resultant string
 var removeNonNumericChars = function(value) {
   var result = "",
       i;
@@ -90,8 +92,8 @@ var removeNonNumericChars = function(value) {
   return result;
 };
 
+// Does comparisons
 var compareHelper = function(val1, val2, numeric) {
-
   if (numeric) {
     val1 = removeNonNumericChars(val1);
     val2 = removeNonNumericChars(val2);
@@ -109,6 +111,7 @@ var compareHelper = function(val1, val2, numeric) {
   return val1 >= val2;
 };
 
+// Re-writes the table with the passed rows.
 var rewriteTableWith = function(newOrder) {
   var rows = $("table.sortable-table tr").get().slice(1),
       i,
@@ -129,6 +132,9 @@ var rewriteTableWith = function(newOrder) {
   }
 };
 
+// Takes in a header element to be sorted by. The second param, a
+// boolean value, specifies whether the header's elements are 
+// numeric (defaults to false).
 var sortByHeaderElement = function(headerElement, numeric=false) {
   var toSort = tableRowsAndHeaders.rows,
       sortBy = headerElement.textContent,
