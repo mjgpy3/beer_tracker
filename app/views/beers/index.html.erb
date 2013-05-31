@@ -1,11 +1,11 @@
 <h1>Listing beers</h1>
 
-<table>
+<table class="sortable-table" border="1">
   <tr>
-    <th>Brewery</th>
-    <th>Brew</th>
+    <th onclick="sortByHeaderElement(this)">Brewery</th>
+    <th onclick="sortByHeaderElement(this)">Brew</th>
     <% if current_user.is_admin? %>
-    <th>Picture</th>
+    <th onclick="sortByHeaderElement(this)">Picture</th>
     <th></th>
     <th></th>
     <th></th>
