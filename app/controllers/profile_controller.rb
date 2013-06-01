@@ -6,6 +6,13 @@ class ProfileController < ApplicationController
     @user = get_username_without_email current_user
   end
 
+  def add_tried_from_list
+    @selectable = true
+  end
+
+  def add_tried_by_new
+  end
+
 private
 
   def get_username_without_email user
