@@ -13,6 +13,16 @@ class ProfileController < ApplicationController
   def add_tried_by_new
   end
 
+  def create_tried
+    tried = Tried.new
+
+    tried.user_id = current_user.id
+    tried.beer_id = params[:beer_id]
+    tried.rating = params[:rating]
+
+    tried.save
+  end
+
 private
 
   def get_username_without_email user
