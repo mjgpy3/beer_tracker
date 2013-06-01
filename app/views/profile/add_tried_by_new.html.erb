@@ -1,0 +1,31 @@
+<div style="float:left;">
+  <h2>Add and rate your beer:</h2>
+  <%= form_tag profile_create_beer_and_tried_path do %>
+
+    <% fields_for @beer do |f| %>
+
+      <div class="field">
+        <%= f.label :brewery %><br />
+        <%= f.text_field :brewery %>
+      </div>
+      <div class="field">
+        <%= f.label :brew %><br />
+        <%= f.text_field :brew %>
+      </div>
+      <% if current_user.is_admin? %>
+      <div class="field">
+        <%= f.label :picture %><br />
+        <%= f.text_field :picture %>
+      </div>
+      <% end %>
+ 
+      <label>Rating</label><br />
+      <%= text_field_tag 'rating' %><br />
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>
