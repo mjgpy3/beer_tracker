@@ -2,9 +2,6 @@
 
 <table class="sortable-table" border="1">
   <tr>
-    <% if @selectable %>
-    <th></th>
-    <% end %>
     <th onclick="sortByHeaderElement(this)">Brewery</th>
     <th onclick="sortByHeaderElement(this)">Brew</th>
     <th onclick="sortByHeaderElement(this, true)">Rating</th>
@@ -12,9 +9,6 @@
   </tr>
   <% current_user.trieds.each do | trial | %>
   <tr>
-    <% if @selectable %>
-    <td>c</td>
-    <% end %>
     <td><%= Beer.find(trial.beer_id).brewery %></td>
     <td><%= Beer.find(trial.beer_id).brew %></td>
     <td><%= trial.rating %></td>

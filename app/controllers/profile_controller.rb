@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
   end
 
   def add_tried_from_list
-    @selectable = true
+    @beers = Beer.all
   end
 
   def add_tried_by_new
