@@ -24,6 +24,8 @@ class ProfileController < ApplicationController
     tried.rating = params[:rating]
 
     tried.save
+
+    redirect_to profile_index_path
   end
 
   def create_beer_and_tried

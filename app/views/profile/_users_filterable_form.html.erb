@@ -2,6 +2,7 @@
 
 <table class="sortable-table" border="1">
   <tr>
+    <th></th>
     <th onclick="sortByHeaderElement(this)">Brewery</th>
     <th onclick="sortByHeaderElement(this)">Brew</th>
     <th onclick="sortByHeaderElement(this, true)">Rating</th>
@@ -9,6 +10,12 @@
   </tr>
   <% current_user.trieds.each do | trial | %>
   <tr>
+    <% if Beer.find(trial.beer_id).picture == "" || Beer.find(trial.beer_id).picture == nil %>
+      <td><%= image_tag 'generic_beer.png', :size => "20x20" %></td>
+    <% else %>
+      <td><%= image_tag Beer.find(trial.beer_id).picture, :size => "20x20" %></td>
+    <% end %>
+
     <td><%= Beer.find(trial.beer_id).brewery %></td>
     <td><%= Beer.find(trial.beer_id).brew %></td>
     <td><%= trial.rating %></td>

@@ -1,18 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Brewery:</b>
-  <%= @beer.brewery %>
-</p>
-
+  <%= @beer.brewery %> ~ <%= @beer.brew %>
 <p>
-  <b>Brew:</b>
-  <%= @beer.brew %>
-</p>
-
-<p>
-  <b>Picture:</b>
-  <%= @beer.picture %>
+  <%= image_tag @picture %>
 </p>
 
 

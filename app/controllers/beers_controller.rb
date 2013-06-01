@@ -18,6 +18,12 @@ class BeersController < ApplicationController
   def show
     @beer = Beer.find(params[:id])
 
+    if @beer.picture == "" || @beer.picture == nil
+      @picture = 'generic_beer.png'
+    else
+      @picture = @beer.picture
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @beer }
