@@ -26,12 +26,9 @@ class ProfileController < ApplicationController
     @beer = Beer.new(params[:beer])
 
     if @beer.save
-      tried = Tried.new
-      tried.rating = params[:rating]
-      tried.user_id = current_user.id
-      tried.beer_id = @beer.id
-
-      tried.save
+      Tried.create_from_ids_and_rating current_user.id, 
+                                       @beer.id,
+                                       params[:rating]
     end
 
     redirect_to profile_index_path
