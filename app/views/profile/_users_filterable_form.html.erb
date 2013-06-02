@@ -10,12 +10,7 @@
   </tr>
   <% current_user.trieds.each do | trial | %>
   <tr>
-    <% if Beer.find(trial.beer_id).picture == "" || Beer.find(trial.beer_id).picture == nil %>
-      <td><%= image_tag 'generic_beer.png', :size => "20x20" %></td>
-    <% else %>
-      <td><%= image_tag Beer.find(trial.beer_id).picture, :size => "20x20" %></td>
-    <% end %>
-
+    <td><%= image_tag Beer.find(trial.beer_id).get_picture_or_generic_if_none, :size => "20x20" %></td>
     <td><%= Beer.find(trial.beer_id).brewery %></td>
     <td><%= Beer.find(trial.beer_id).brew %></td>
     <td><%= trial.rating %></td>
