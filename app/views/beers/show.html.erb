@@ -3,7 +3,7 @@
 <p>
   <%= @beer.brewery %> ~ <%= @beer.brew %>
 <p>
-  <%= image_tag @picture %>
+  <%= image_tag @beer.get_picture_or_generic_if_none %>
 </p>
 
 

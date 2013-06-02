@@ -18,8 +18,6 @@ class BeersController < ApplicationController
   def show
     @beer = Beer.find(params[:id])
 
-    @picture = @beer.get_picture_or_generic_if_none
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @beer }
