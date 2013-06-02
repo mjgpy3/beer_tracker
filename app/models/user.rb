@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
     self.email[0..at_sign_location-1]
   end
 
-  has_many :trieds
+  has_many :trieds, :dependent => :destroy
   has_many :beers, :through => :trieds
 end
