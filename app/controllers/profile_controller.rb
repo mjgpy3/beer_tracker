@@ -33,11 +33,4 @@ class ProfileController < ApplicationController
 
     redirect_to profile_index_path
   end
-
-private
-
-  def get_username_without_email user
-    at_sign_location = user.email.index("@")
-    user.email[0..at_sign_location-1]
-  end
 end
