@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :beers
   # attr_accessible :title, :body
 
+  def get_username
+    at_sign_location = self.email.index("@")
+    self.email[0..at_sign_location-1]
+  end
+
   has_many :trieds
   has_many :beers, :through => :trieds
 end
