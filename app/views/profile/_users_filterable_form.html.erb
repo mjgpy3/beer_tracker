@@ -10,11 +10,11 @@
   </tr>
   <% current_user.trieds.each do | trial | %>
   <tr>
-    <td><%= image_tag Beer.find(trial.beer_id).get_picture_or_generic_if_none, :size => "20x20" %></td>
-    <td><%= Beer.find(trial.beer_id).brewery %></td>
-    <td><%= Beer.find(trial.beer_id).brew %></td>
+    <td><%= image_tag trial.get_beer.get_picture_or_generic_if_none, :size => "20x20" %></td>
+    <td><%= trial.get_beer.brewery %></td>
+    <td><%= trial.get_beer.brew %></td>
     <td><%= trial.rating %></td>
-    <td><%= link_to "Show", Beer.find(trial.beer_id) %></td>
+    <td><%= link_to "Show", trial.get_beer %></td>
   </tr>
 <% end %>
 </table>
