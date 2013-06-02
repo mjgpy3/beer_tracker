@@ -15,13 +15,9 @@ class ProfileController < ApplicationController
   end
 
   def create_tried
-    tried = Tried.new
-
-    tried.user_id = current_user.id
-    tried.beer_id = params[:beer_id]
-    tried.rating = params[:rating]
-
-    tried.save
+    Tried.create_from_ids_and_rating current_user.id,
+                                     params[:beer_id],
+                                     params[:rating]
 
     redirect_to profile_index_path
   end
