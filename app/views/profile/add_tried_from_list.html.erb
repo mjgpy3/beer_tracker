@@ -5,10 +5,11 @@
     <%= render 'filter_brewery' %>
 
     <%= render 'system_filterable_form'%>
+
     <label>Rating:</label>
     <%= text_field_tag 'rating' %><br />
-    <%= submit_tag 'Select' %>
-  <% end %>
 
-  <%= link_to 'Not in system', profile_add_tried_by_new_path %>
+    <%= submit_tag 'Select' %>
+    <%= button_to 'Not in system', profile_add_tried_by_new_path, :method => 'get' %>
+  <% end %>
 </div>
