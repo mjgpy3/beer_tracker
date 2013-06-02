@@ -1,16 +1,30 @@
-<%= render 'filter_brewery' %>
-
 <table class="sortable-table" border="1">
   <tr>
     <th></th>
     <th onclick="sortByHeaderElement(this)">Brewery</th>
     <th onclick="sortByHeaderElement(this)">Brew</th>
+    <% if current_user.is_admin? %>
+    <th onclick="sortByHeaderElement(this)">Picture</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <% end %>
   </tr>
-  <% @beers.each do | beer | %>
+
+<% @beers.each do |beer| %>
   <tr>
-    <th><%= radio_button_tag "beer_id", beer.id %></th>
+    <td><%= radio_button_tag "beer_id", beer.id %></td>
     <td><%= beer.brewery %></td>
     <td><%= beer.brew %></td>
+    <% if current_user.is_admin? %>
+    <td><%= beer.picture %></td>
+    <% end %>
+    <td><%= link_to 'Show', beer %></td>
+    <% if current_user.is_admin? %>
+    <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
+    <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
+

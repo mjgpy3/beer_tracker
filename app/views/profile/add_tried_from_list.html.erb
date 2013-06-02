@@ -2,6 +2,8 @@
   <h2>Beers in system:</h2>
   <%= form_tag profile_create_tried_path do %>
 
+    <%= render 'filter_brewery' %>
+
     <%= render 'system_filterable_form'%>
     <label>Rating:</label>
     <%= text_field_tag 'rating' %><br />

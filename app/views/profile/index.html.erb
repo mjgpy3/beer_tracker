@@ -1,6 +1,7 @@
 <div>
   <h2><%= current_user.get_username %>'s beers</h2>
 
-  <%= button_to "I've Tried Another", profile_add_tried_from_list_path, :method => 'get' %><br />
+  <%= button_to "I've Tried Another", profile_add_tried_from_list_path, :method => 'get' %>
+
   <%= render 'users_filterable_form' %>
 </div>

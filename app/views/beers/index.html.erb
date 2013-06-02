@@ -2,32 +2,6 @@
 
 <%= render '/profile/filter_brewery'%>
 
-<table class="sortable-table" border="1">
-  <tr>
-    <th onclick="sortByHeaderElement(this)">Brewery</th>
-    <th onclick="sortByHeaderElement(this)">Brew</th>
-    <% if current_user.is_admin? %>
-    <th onclick="sortByHeaderElement(this)">Picture</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <% end %>
-  </tr>
-
-<% @beers.each do |beer| %>
-  <tr>
-    <td><%= beer.brewery %></td>
-    <td><%= beer.brew %></td>
-    <% if current_user.is_admin? %>
-    <td><%= beer.picture %></td>
-    <td><%= link_to 'Show', beer %></td>
-    <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-    <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<%= render '/profile/system_filterable_form'%>
 
 <%= link_to 'New Beer', new_beer_path %>
