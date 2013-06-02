@@ -183,7 +183,6 @@ var filterRows = function (textElement, filterBy) {
   if (filterText == "") {
    tableRowsAndHeaders.rows = toFilter;
    rewriteTableWith(toFilter);
-   console.log("No text");
    return;
   }
 
@@ -191,7 +190,6 @@ var filterRows = function (textElement, filterBy) {
     for (i = 0; i < toFilter.length; i += 1) {
       if (contains(toFilter[i][filterBy], filterText)) {
         passingRows.push(toFilter[i]);
-        console.log("Found match");
       }
     }
   }
