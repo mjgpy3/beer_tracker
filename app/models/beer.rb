@@ -7,10 +7,8 @@ class Beer < ActiveRecord::Base
   has_many :users, :through => :trieds
 
   def get_picture_or_generic_if_none
-    if self.picture == "" || self.picture == nil
-      @@generic_picture
-    else
-      self.picture
-    end
+    return @@generic_picture if self.picture == "" || self.picture == nil
+    
+    self.picture
   end
 end
